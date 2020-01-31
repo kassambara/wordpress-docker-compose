@@ -1,15 +1,6 @@
 install: configure
 
 configure:
-#	@echo "⚙️ Configuring Wordpress database..."
-#	@rm -f wp-config.php
-#	wp core config \
-#		--dbhost=${WORDPRESS_DB_HOST} \
-#		--dbname=${WORDPRESS_DB_NAME} \
-#		--dbuser=${WORDPRESS_DB_USER} \
-#		--dbpass=${WORDPRESS_DB_PASSWORD} \
-#		--locale=${WORDPRESS_LOCALE} \
-#		--skip-check
 
 	@echo "⚙️ Configuring Wordpress parameters..."
 	wp core install \
