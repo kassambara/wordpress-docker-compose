@@ -1,0 +1,84 @@
+version: '3.6'
+services:
+
+  wordpress:
+    image: wordpress:${WORDPRESS_VERSION:-php7.3-fpm-alpine}
+    container_name: ${COMPOSE_PROJECT_NAME:-wordpress}
+    volumes:
+      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/php.ini
+      - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
+    environment:
+      - WORDPRESS_DB_NAME=${COMPOSE_PROJECT_NAME:-wordpress}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX:-wp_}
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST:-mysql}
+      - WORDPRESS_DB_USER=${DATABASE_USER:-root}
+      - WORDPRESS_DB_PASSWORD=${DATABASE_PASSWORD:-password}
+    depends_on:
+      - mysql
+      - phpmyadmin
+    restart: always
+
+  mysql:
+    image: mariadb:${MARIADB_VERSION:-latest}
+    container_name: ${COMPOSE_PROJECT_NAME}_mysql
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DATABASE_PASSWORD:-password}
+      - MYSQL_USER=${DATABASE_USER:-root}
+      - MYSQL_PASSWORD=${DATABASE_PASSWORD:-password}
+      - MYSQL_DATABASE=${COMPOSE_PROJECT_NAME:-wordpress}
+    restart: always
+
+  nginx:
+    image: nginx:${NGINX_VERSION:-latest}
+    container_name: ${COMPOSE_PROJECT_NAME}_nginx
+    ports:
+      - '80:80'
+      - '443:443'
+    depends_on:
+      - wordpress
+    volumes:
+      - ${NGINX_CONF_DIR:-./nginx}:/etc/nginx/conf.d
+      - ${NGINX_LOG_DIR:-./logs/nginx}:/var/log/nginx
+      - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
+    restart: always
+
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    container_name: ${COMPOSE_PROJECT_NAME}_phpmyadmin
+    restart: always
+    ports:
+      - ${PHPMYADMIN_PORT}:80
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-password}
+
+
+  # Command line interface to wordpress
+  wpcli:
+    build: ./wpcli/
+    image: wpcli
+    container_name: ${COMPOSE_PROJECT_NAME}_wpcli
+    volumes:
+      - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
+    working_dir: /var/www/html
+
+
+# Check availability of essential services
+  healthcheck:
+    image: wpcli
+    build: ./wpcli/
+    container_name: ${COMPOSE_PROJECT_NAME}_healthcheck
+    command: sh -c "/wait"
+    environment:
+      - WAIT_HOSTS=mysql:3306, nginx:80
+      - WAIT_BEFORE_HOSTS=${WAIT_BEFORE_HOSTS:-30}
+      - WAIT_AFTER_HOSTS=${WAIT_AFTER_HOSTS:-15}
+      - WAIT_HOSTS_TIMEOUT=${WAIT_HOSTS_TIMEOUT:-300}
+      - WAIT_SLEEP_INTERVAL=${WAIT_SLEEP_INTERVAL:-30}
+      - WAIT_HOST_CONNECT_TIMEOUT=${WAIT_HOST_CONNECT_TIMEOUT:-30}
+
+

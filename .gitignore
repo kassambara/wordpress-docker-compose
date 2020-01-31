@@ -1,0 +1,10 @@
+.Rbuildignore
+.deploy-wordpress-localhost.Rproj
+.Rproj.user
+.Rhistory
+.RData
+.DS_Store
+wordpress/*
+!wordpress/.keep
+mysql/*
+!mysql/.keep
