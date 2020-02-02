@@ -15,7 +15,5 @@ ADD Makefile entrypoint.sh /scripts/
 RUN chmod +x /scripts/entrypoint.sh
 
 ENTRYPOINT [ "/scripts/entrypoint.sh" ]
-# Setting default user id and group to 33 to make wp-cli
-# compatible with wordpress:latest (apache not alpine)
-USER 33:33
+USER wwww-data
 CMD ["wp", "shell"]
