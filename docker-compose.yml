@@ -56,7 +56,6 @@ services:
       PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-password}
 
-
   # Command line interface to wordpress
   wpcli:
     build: ./wpcli/
@@ -65,7 +64,6 @@ services:
     volumes:
       - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
     working_dir: /var/www/html
-
 
 # Check availability of essential services
   healthcheck:
