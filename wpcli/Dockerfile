@@ -1,7 +1,5 @@
 FROM wordpress:cli
 
-MAINTAINER Alboukadel KASSAMBARA
-
 # Install make tool
 USER root
 RUN apk add --no-cache make
