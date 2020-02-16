@@ -15,5 +15,5 @@ ADD Makefile entrypoint.sh /scripts/
 RUN chmod +x /scripts/entrypoint.sh
 
 ENTRYPOINT [ "/scripts/entrypoint.sh" ]
-USER www-data
+USER 33:33
 CMD ["wp", "shell"]

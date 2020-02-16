@@ -13,10 +13,9 @@ services:
     depends_on:
       - wordpress
       - mysql
-      - nginx
     environment:
-      # Waiting for MySQL and Nginx -------------------
-      - WAIT_HOSTS=mysql:3306, nginx:80
+      # Waiting for MySQL and wordpress -------------------
+      - WAIT_HOSTS=mysql:3306,wordpress:80
       - WAIT_BEFORE_HOSTS=${WAIT_BEFORE_HOSTS:-30}
       - WAIT_AFTER_HOSTS=${WAIT_AFTER_HOSTS:-15}
       - WAIT_HOSTS_TIMEOUT=${WAIT_HOSTS_TIMEOUT:-300}
