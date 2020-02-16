@@ -2,7 +2,7 @@ version: '3.6'
 services:
 
   wordpress:
-    image: wordpress:${WORDPRESS_VERSION:-php7.3-fpm-alpine}
+    image: wordpress:${WORDPRESS_VERSION:-latest}
     image: wordpress:latest
     container_name: ${COMPOSE_PROJECT_NAME:-wordpress}
     volumes:
