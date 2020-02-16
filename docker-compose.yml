@@ -3,6 +3,7 @@ services:
 
   wordpress:
     image: wordpress:${WORDPRESS_VERSION:-php7.3-fpm-alpine}
+    image: wordpress:latest
     container_name: ${COMPOSE_PROJECT_NAME:-wordpress}
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/php.ini
@@ -17,6 +18,8 @@ services:
       - mysql
       - phpmyadmin
     restart: always
+    ports:
+        - 80:80
 
   mysql:
     image: mariadb:${MARIADB_VERSION:-latest}
@@ -28,20 +31,6 @@ services:
       - MYSQL_USER=${DATABASE_USER:-root}
       - MYSQL_PASSWORD=${DATABASE_PASSWORD:-password}
       - MYSQL_DATABASE=${COMPOSE_PROJECT_NAME:-wordpress}
-    restart: always
-
-  nginx:
-    image: nginx:${NGINX_VERSION:-latest}
-    container_name: ${COMPOSE_PROJECT_NAME}_nginx
-    ports:
-      - '80:80'
-      - '443:443'
-    depends_on:
-      - wordpress
-    volumes:
-      - ${NGINX_CONF_DIR:-./nginx}:/etc/nginx/conf.d
-      - ${NGINX_LOG_DIR:-./logs/nginx}:/var/log/nginx
-      - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
     restart: always
 
   phpmyadmin:
@@ -72,7 +61,7 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_healthcheck
     command: sh -c "/wait"
     environment:
-      - WAIT_HOSTS=mysql:3306, nginx:80
+      - WAIT_HOSTS=mysql:3306, wordpress:80
       - WAIT_BEFORE_HOSTS=${WAIT_BEFORE_HOSTS:-30}
       - WAIT_AFTER_HOSTS=${WAIT_AFTER_HOSTS:-15}
       - WAIT_HOSTS_TIMEOUT=${WAIT_HOSTS_TIMEOUT:-300}
