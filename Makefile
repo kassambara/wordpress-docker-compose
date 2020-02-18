@@ -17,7 +17,7 @@ autoinstall: start
 
 clean: down
 	@echo "💥 Removing related folders/files..."
-	@rm -rf certs/* certs-data/* logs/nginx/* mysql/* wordpress/*
+	@rm -rf  mysql/* wordpress/*
 
 reset: clean
 
