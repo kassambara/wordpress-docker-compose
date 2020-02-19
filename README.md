@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Deploy Wordpress on Localhost using Docker Compose
+# Deploy Wordpress on Localhost and in Production using Docker Compose
 
 The installation tool kit, provided here, include:
 
