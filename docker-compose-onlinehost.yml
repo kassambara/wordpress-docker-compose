@@ -41,7 +41,6 @@ services:
       - REDIRECT=${WORDPRESS_WEBSITE_URL}
       # CHANGE THE REDIRECT URL
       - REDIRECT=https://www.change-me-with-your-domain.com
-      - REDIRECT=https://www.omicstudio.com
       - WORKER_CONNECTIONS=1024
     networks:
       - ${COMPOSE_PROJECT_NAME}_default
