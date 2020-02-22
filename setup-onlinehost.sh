@@ -9,16 +9,16 @@
 #----------------------------------------------------------
 
 # Change these settings as you want %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-project_name="wordpress"
+project_name="wordpress"  # Must be lower-case, no spaces and no invalid path chars.
 user_name="wordpress"
-pass_word="wordpress"
+pass_word="wordpress"   # no special chars
 email="your-email@example.com"
 website_title="My Blog"
 website_url="https://www.example.com"
 phmyadmin_url="sql.example.com"
 env_file=".env"
 compose_file="docker-compose.yml"
-# STOP here and execute: chmod +x setup.sh && ./setup.sh %%%%%%%%%
+# STOP here and execute: chmod +x setup-onlinehost.sh && ./setup-onlinehost.sh %%
 
 
 echo ---SETTING PRODUCTION ENVIRONMENT VARIABLES----
