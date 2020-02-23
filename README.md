@@ -3,6 +3,18 @@
 
 # Deploy Wordpress on Localhost and in Production using Docker Compose
 
+Related blog post:
+
+  - [WordPress Local Development Using Docker
+    Compose](https://www.datanovia.com/en/lessons/wordpress-local-development-using-docker-compose/):
+    Deploy Wordpress on localhost using docker
+  - [Docker WordPress Production
+    Deployment](https://www.datanovia.com/en/lessons/docker-wordpress-production-deployment/):
+    Step-by-step guide to deploy WordPress online using docker-compose
+  - [Using Docker WordPress Cli to Manage WordPress
+    Websites](https://www.datanovia.com/en/lessons/using-docker-wordpress-cli-to-manage-wordpress-websites/):
+    Commande line interface for managing a WordPress website
+
 The installation tool kit, provided here, include:
 
   - Nginx web server
