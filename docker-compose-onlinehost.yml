@@ -64,7 +64,7 @@ services:
   phpmyadmin:
     depends_on:
       - mysql
-    image: phpmyadmin/phpmyadmin
+    image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION:-latest}
     container_name: ${COMPOSE_PROJECT_NAME}_phpmyadmin
     restart: always
     ports:
