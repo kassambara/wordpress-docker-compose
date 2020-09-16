@@ -31,7 +31,7 @@ using the following commands:
 git clone https://github.com/kassambara/wordpress-docker-compose
 cd wordpress-docker-compose
 # Build and start installation
-docker-compose up -d --build
+docker-compose up -d build
 ```
 
 Visit your site at <http://localhost> and your database via phpMyAdmin
@@ -53,7 +53,7 @@ Default identification for the phpMyAdmin interface:
 # Stop and remove containers
 docker-compose down
 # Build, and start the wordpress website
-docker-compose up -d --build
+docker-compose up -d build
 # Reset everything
 docker-compose down
 rm -rf certs/* certs-data/* logs/nginx/* mysql/* wordpress/*
