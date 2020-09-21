@@ -1,6 +1,5 @@
-version: '3.6'
+version: "3.6"
 services:
-
   wordpress:
     image: wordpress:${WORDPRESS_VERSION:-latest}
     container_name: ${COMPOSE_PROJECT_NAME:-wordpress}
@@ -18,7 +17,7 @@ services:
       - phpmyadmin
     restart: always
     ports:
-        - 80:80
+      - 80:80
 
   mysql:
     image: mariadb:${MARIADB_VERSION:-latest}
@@ -51,9 +50,11 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_wpcli
     volumes:
       - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
+      - ${WORDPRESS_THEME_LOCAL_DIR}:${WORDPRESS_THEME_CONTAINER_ROOT_DIR}
+      - ${WORDPRESS_THEME_PLUGIN_LOCAL_DIR}:${WORDPRESS_THEME_PLUGIN_CONTAINER_ROOT_DIR}
     working_dir: /var/www/html
 
-# Check availability of essential services
+  # Check availability of essential services
   healthcheck:
     image: wpcli
     build: ./wpcli/
@@ -66,5 +67,3 @@ services:
       - WAIT_HOSTS_TIMEOUT=${WAIT_HOSTS_TIMEOUT:-300}
       - WAIT_SLEEP_INTERVAL=${WAIT_SLEEP_INTERVAL:-30}
       - WAIT_HOST_CONNECT_TIMEOUT=${WAIT_HOST_CONNECT_TIMEOUT:-30}
-
-
