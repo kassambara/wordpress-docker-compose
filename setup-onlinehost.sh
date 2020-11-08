@@ -10,12 +10,12 @@
 
 # Change these settings as you want %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 project_name="wordpress"  # Must be lower-case, no spaces and no invalid path chars.
-user_name="wordpress"
-pass_word="wordpress"   # no special chars
+user_name="root"
+pass_word="password"   # no special chars
 email="your-email@example.com"
 website_title="My Blog"
-website_url="https://www.example.com"
-phmyadmin_url="sql.example.com"
+website_url="https://localhost.com"
+phmyadmin_url="sql.localhost.com"
 env_file=".env"
 compose_file="docker-compose.yml"
 # STOP here and execute: chmod +x setup-onlinehost.sh && ./setup-onlinehost.sh %%

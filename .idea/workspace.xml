@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5ab8ec48-7601-4adf-9b9e-d67e6f9bcbbc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose-onlinehost.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup-onlinehost.sh" beforeDir="false" afterPath="$PROJECT_DIR$/setup-onlinehost.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wpcli/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/wpcli/Dockerfile" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1jzYD9IdNp3XliDTjUYgIwgaJQF" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="wpcli/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="" />
+          <option name="buildCliOptions" value="" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="wpcli/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.wpcli/Dockerfile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5ab8ec48-7601-4adf-9b9e-d67e6f9bcbbc" name="Default Changelist" comment="" />
+      <created>1604808264733</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604808264733</updated>
+      <workItem from="1604808266199" duration="2606000" />
+      <workItem from="1604811653018" duration="5788000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="445" y="306" key="#WordPress" timestamp="1604818272565">
+      <screen x="0" y="0" width="1200" height="760" />
+    </state>
+    <state x="445" y="306" key="#WordPress/0.0.1200.760@0.0.1200.760" timestamp="1604818272565" />
+    <state x="351" y="228" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604815788745">
+      <screen x="0" y="0" width="1200" height="760" />
+    </state>
+    <state x="351" y="228" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1200.760@0.0.1200.760" timestamp="1604815788745" />
+    <state x="310" y="0" width="581" height="760" key="find.popup" timestamp="1604815609072">
+      <screen x="0" y="0" width="1200" height="760" />
+    </state>
+    <state x="310" y="0" width="581" height="760" key="find.popup/0.0.1200.760@0.0.1200.760" timestamp="1604815609072" />
+    <state x="263" y="81" width="672" height="678" key="search.everywhere.popup" timestamp="1604815927633">
+      <screen x="0" y="0" width="1200" height="760" />
+    </state>
+    <state x="263" y="81" width="672" height="678" key="search.everywhere.popup/0.0.1200.760@0.0.1200.760" timestamp="1604815927633" />
+  </component>
+</project>
