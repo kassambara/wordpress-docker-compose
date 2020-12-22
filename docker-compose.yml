@@ -15,13 +15,12 @@ services:
       - WORDPRESS_DB_PASSWORD=${DATABASE_PASSWORD:-password}
     depends_on:
       - mysql
-      - phpmyadmin
     restart: always
     ports:
-        - 80:80
+        - 8080:80
 
   mysql:
-    image: mariadb:${MARIADB_VERSION:-latest}
+    image: mysql:${MYSQL_VERSION:-latest}
     container_name: ${COMPOSE_PROJECT_NAME}_mysql
     volumes:
       - ./mysql:/var/lib/mysql
@@ -31,40 +30,20 @@ services:
       - MYSQL_PASSWORD=${DATABASE_PASSWORD:-password}
       - MYSQL_DATABASE=${COMPOSE_PROJECT_NAME:-wordpress}
     restart: always
-
-  phpmyadmin:
-    depends_on:
-      - mysql
-    image: phpmyadmin/phpmyadmin:${PHPMYADMIN_VERSION:-latest}
-    container_name: ${COMPOSE_PROJECT_NAME}_phpmyadmin
-    restart: always
     ports:
-      - ${PHPMYADMIN_PORT}:80
-    environment:
-      PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-password}
+        - 9753:3306
 
   # Command line interface to wordpress
   wpcli:
-    build: ./wpcli/
-    image: wpcli
+    depends_on: 
+      - mysql
+      - wordpress
+    image: wordpress:cli
+    links:
+      - mysql:db
     container_name: ${COMPOSE_PROJECT_NAME}_wpcli
     volumes:
       - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
     working_dir: /var/www/html
-
-# Check availability of essential services
-  healthcheck:
-    image: wpcli
-    build: ./wpcli/
-    container_name: ${COMPOSE_PROJECT_NAME}_healthcheck
-    command: sh -c "/wait"
-    environment:
-      - WAIT_HOSTS=mysql:3306, wordpress:80
-      - WAIT_BEFORE_HOSTS=${WAIT_BEFORE_HOSTS:-30}
-      - WAIT_AFTER_HOSTS=${WAIT_AFTER_HOSTS:-15}
-      - WAIT_HOSTS_TIMEOUT=${WAIT_HOSTS_TIMEOUT:-300}
-      - WAIT_SLEEP_INTERVAL=${WAIT_SLEEP_INTERVAL:-30}
-      - WAIT_HOST_CONNECT_TIMEOUT=${WAIT_HOST_CONNECT_TIMEOUT:-30}
 
 
