@@ -2,7 +2,7 @@ version: '3.6'
 services:
 
   wordpress:
-    image: wordpress:latest
+    image: wordpress:${WORDPRESS_VERSION:-latest}
     container_name: ${COMPOSE_PROJECT_NAME:-wordpress}
     volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/php.ini
@@ -25,7 +25,7 @@ services:
       - phpmyadmin
     restart: always
     networks:
-        - ${COMPOSE_PROJECT_NAME}_default
+        - wordpress-default
         - nginx-proxy
 
   # Redirect non-www to www
@@ -43,7 +43,7 @@ services:
       - REDIRECT=https://www.change-me-with-your-domain.com
       - WORKER_CONNECTIONS=1024
     networks:
-      - ${COMPOSE_PROJECT_NAME}_default
+      - wordpress-default
       - nginx-proxy
 
 
@@ -59,7 +59,7 @@ services:
       - MYSQL_DATABASE=${COMPOSE_PROJECT_NAME:-wordpress}
     restart: always
     networks:
-      - ${COMPOSE_PROJECT_NAME}_default
+      - wordpress-default
 
   phpmyadmin:
     depends_on:
@@ -78,7 +78,7 @@ services:
       - LETSENCRYPT_EMAIL=${WORDPRESS_ADMIN_EMAIL}
       - VIRTUAL_PORT=80
     networks:
-      - ${COMPOSE_PROJECT_NAME}_default
+      - wordpress-default
       - nginx-proxy
 
   # Command line interface to wordpress
@@ -90,7 +90,7 @@ services:
       - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
     working_dir: /var/www/html
     networks:
-        - ${COMPOSE_PROJECT_NAME}_default
+        - wordpress-default
 
 # Check availability of essential services
   healthcheck:
@@ -106,10 +106,10 @@ services:
       - WAIT_SLEEP_INTERVAL=${WAIT_SLEEP_INTERVAL:-30}
       - WAIT_HOST_CONNECT_TIMEOUT=${WAIT_HOST_CONNECT_TIMEOUT:-30}
     networks:
-      - ${COMPOSE_PROJECT_NAME}_default
+      - wordpress-default
 
 networks:
-    wordpress_default:
+    wordpress-default:
         name: ${COMPOSE_PROJECT_NAME}_default
     nginx-proxy:
         external:
