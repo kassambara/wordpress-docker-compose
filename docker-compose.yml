@@ -51,6 +51,10 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_wpcli
     volumes:
       - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
+    environment:
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST:-mysql}
+      - WORDPRESS_DB_USER=${DATABASE_USER:-root}
+      - WORDPRESS_DB_PASSWORD=${DATABASE_PASSWORD:-password}
     working_dir: /var/www/html
 
 # Check availability of essential services
