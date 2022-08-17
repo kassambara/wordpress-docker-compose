@@ -65,3 +65,8 @@ rm -rf certs/* certs-data/* logs/nginx/* mysql/* wordpress/*
     Docker](https://github.com/mjstealey/wordpress-nginx-docker)
   - [Quickstart: Compose and
     WordPress](https://docs.docker.com/compose/wordpress/)
+
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)
