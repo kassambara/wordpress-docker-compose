@@ -13,6 +13,7 @@ RUN chmod +x /wait
 # Add Makefile to scripts dir
 ADD Makefile entrypoint.sh /scripts/
 RUN chmod +x /scripts/entrypoint.sh
+RUN chmod 775 /scripts/Makefile
 
 ENTRYPOINT [ "/scripts/entrypoint.sh" ]
 USER 33:33
