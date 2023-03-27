@@ -19,6 +19,8 @@ services:
     restart: always
     ports:
         - 80:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   mysql:
     image: mariadb:${MARIADB_VERSION:-latest}
