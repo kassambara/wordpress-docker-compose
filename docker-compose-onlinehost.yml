@@ -86,11 +86,17 @@ services:
     build: ./wpcli/
     image: wpcli
     container_name: ${COMPOSE_PROJECT_NAME}_wpcli
+    command: tail -f /dev/null
     volumes:
       - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
     working_dir: /var/www/html
-    networks:
-        - ${COMPOSE_PROJECT_NAME}_default
+    environment:
+      WORDPRESS_DB_HOST: host.docker.internal:3306
+      WORDPRESS_DB_USER: ${DATABASE_USER}
+      WORDPRESS_DB_PASSWORD: ${DATABASE_PASSWORD}
+      WORDPRESS_DB_NAME: ${COMPOSE_PROJECT_NAME}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 # Check availability of essential services
   healthcheck:
