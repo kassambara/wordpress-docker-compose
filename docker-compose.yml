@@ -19,6 +19,8 @@ services:
     restart: always
     ports:
         - 80:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   mysql:
     image: mariadb:${MARIADB_VERSION:-latest}
@@ -52,6 +54,14 @@ services:
     volumes:
       - ${WORDPRESS_DATA_DIR:-./wordpress}:/var/www/html
     working_dir: /var/www/html
+    command: tail -f /dev/null
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: ${DATABASE_USER}
+      WORDPRESS_DB_PASSWORD: ${DATABASE_PASSWORD}
+      WORDPRESS_DB_NAME: ${COMPOSE_PROJECT_NAME}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 # Check availability of essential services
   healthcheck:
